@@ -73,5 +73,5 @@ Crear un simulador de circuitos con aspecto visual agradable, más gráfico y me
 # Requisitos
 Lenguaje: Processing
 Librerías
-* Dashed Lines: Esta librería puede ser utilizada para representar el flujo de corriente del circuito.
+* [Dashed Lines](https://github.com/garciadelcastillo/-dashed-lines-for-processing-): Esta librería puede ser utilizada para representar el flujo de corriente del circuito.
 * Geomerative: Puede ser utilizada para realizar las conexiones del circuito.
