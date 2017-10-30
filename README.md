@@ -37,7 +37,7 @@ Elemento activo: Elemento capaz de suministrar energía
 
 Elemento pasivo: Elemento capaz de absorber energía.
 
-Resistencia: Es la propiedad física de un elemento o un dispositivo que impide el flujo de corriente. Se representa con el símbolo R. Su unidad es el ohm.
+[Resistencia](https://es.wikipedia.org/wiki/Resistencia_el%C3%A9ctrica): Es la propiedad física de un elemento o un dispositivo que impide el flujo de corriente. Se representa con el símbolo R. Su unidad es el ohm.
 
 Ley de Ohm: Es la relación lineal entre la corriente y el voltaje de un elemento, que corresponde a la fórmula v = Ri. 
 
