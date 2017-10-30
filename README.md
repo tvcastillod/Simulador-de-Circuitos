@@ -45,7 +45,11 @@ Voltímetro: Es un dispositivo utilizado principalmente para medir tensiones o v
 
 Amperímetro: Es un dispositivo utilizado para medir corrientes eléctricas. Se debe conectar en serie con el elemento y la trayectoria de la cual se quiere conocer la corriente.
 
-Interruptor: Es un elemento que tiene dos estados: abierto, que corresponde a un circuito abierto; o cerrado, que corresponde a
+Interruptor: Es un elemento que tiene dos estados: abierto, que corresponde a un circuito abierto; o cerrado, que corresponde a un corto circuito.
+
+Conductor: Se conoce como conductor a un elemento físico caracterizado por su capacidad de permitir el flujo de cargas eléctricas con muy poca resistencia.
+
+Bombilla: Es un elemento que se caracteriza por convertir la energía eléctrica en energía lumínica o luz.
 
 Referencias:
 [1] M. Montijano Moreno, “La simulación de circuitos en el aula de Electrónica”, [online] revista digital para profesionales en la enseñanza, N°4, Septiembre, 2009. Disponible en: https://www.feandalucia.ccoo.es/docu/p5sd5442.pdf
