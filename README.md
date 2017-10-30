@@ -54,6 +54,7 @@ Dado que en este proyecto se busca incentivar a las personas que tienen poco con
 [Bombilla](https://es.wikipedia.org/wiki/L%C3%A1mpara_el%C3%A9ctrica): Es un elemento que se caracteriza por convertir la energía eléctrica en energía lumínica o luz.
 
 Referencias:
+
 [1] M. Montijano Moreno, “La simulación de circuitos en el aula de Electrónica”, [online] revista digital para profesionales en la enseñanza, N°4, Septiembre, 2009. Disponible en: https://www.feandalucia.ccoo.es/docu/p5sd5442.pdf
 
 [2] Dorf, R., Svoboda, J. Introduction to electric circuits (2014). Novena edición. John Wiley & Sons, Inc. EEUU.
