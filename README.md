@@ -15,41 +15,43 @@ Cuando se habla de simuladores de circuitos, hoy día podemos encontrar de todo 
 ## Marco teórico
 Dado que en este proyecto se busca incentivar a las personas que tienen poco conocimiento del manejo circuitos, es pertinente evaluar el papel que tiene un simulador de circuitos académica y personalmente. Este es de gran utilidad a la hora de evaluar el buen funcionamiento de un circuito real, ya que nos permite ver cómo debería funcionar y los resultados aproximados que debería tener, además de ayudar a la detección de errores en el diseño y ejecución de un circuito. En principio, se deben tener en cuenta los siguientes conceptos:
 
-Electricidad: Es el fenómeno físico que proviene de la existencia e interacción de cargas eléctricas.
+[Electricidad](https://es.wikipedia.org/wiki/Electricidad): Es el fenómeno físico que proviene de la existencia e interacción de cargas eléctricas.
 
-Circuito eléctrico: También denominada red eléctrica es una interconexión de elementos eléctricos unidos entre sí en una trayectoria cerrada de forma que pueda fluir continuamente una corriente eléctrica.
+[Circuito eléctrico](https://es.wikipedia.org/wiki/Circuito): También denominada red eléctrica es una interconexión de elementos eléctricos unidos entre sí en una trayectoria cerrada de forma que pueda fluir continuamente una corriente eléctrica.
 
-Carga: Es la cantidad de electricidad responsable de los fenómenos eléctricos. Su unidad es el coulomb [C].
+[Carga](https://es.wikipedia.org/wiki/Carga_el%C3%A9ctrica): Es la cantidad de electricidad responsable de los fenómenos eléctricos. Su unidad es el coulomb [C].
 
-Corriente eléctrica: Es la razón de cambio temporal de la carga eléctrica que pasa por un punto dado. Depende, entre otras cosas, del área en el que fluyen las cargas. Generalmente, el flujo de la corriente también depende de la convención de las cargas, es decir, el flujo de la corriente se representa como el flujo de cargas positivas. Su unidad es el ampere [A]. 
+[Corriente eléctrica](https://es.wikipedia.org/wiki/Corriente_el%C3%A9ctrica): Es la razón de cambio temporal de la carga eléctrica que pasa por un punto dado. Depende, entre otras cosas, del área en el que fluyen las cargas. Generalmente, el flujo de la corriente también depende de la convención de las cargas, es decir, el flujo de la corriente se representa como el flujo de cargas positivas. Su unidad es el ampere [A]. 
 
-Corriente contínua: También definida como corriente directa, es la corriente que tiene magnitud constante.
+[Corriente contínua](https://es.wikipedia.org/wiki/Corriente_continua): También definida como corriente directa, es la corriente que tiene magnitud constante.
 
-Tensión (Diferencia de potencial): La tensión o voltaje a través de un elemento es el trabajo necesario (energía necesaria) para mover una carga eléctrica unitaria y positiva desde su terminal negativo al otro terminal, el positivo. Su unidad es el volt [V].
+[Tensión (Diferencia de potencial)](https://es.wikipedia.org/wiki/Tensi%C3%B3n_(electricidad)): La tensión o voltaje a través de un elemento es el trabajo necesario (energía necesaria) para mover una carga eléctrica unitaria y positiva desde su terminal negativo al otro terminal, el positivo. Su unidad es el volt [V].
 
-Energía: Capacidad de realizar trabajo. Su unidad es el joule [J]. En general, la energía eléctrica se puede convertir en energía mecánica, química o térmica.
+[Energía](https://es.wikipedia.org/wiki/Energ%C3%ADa): Capacidad de realizar trabajo. Su unidad es el joule [J]. En general, la energía eléctrica se puede convertir en energía mecánica, química o térmica.
 
-Potencia: Es la cantidad de energía entregada o absorbida en cierto tiempo. Su unidad es el watt [W]. Al igual que la corriente, la potencia se define dependiendo de la dirección del flujo de cargas. En este caso, si la corriente que pasa por el elemento entra por su terminal positivo, se denomina potencia absorbida. Por otra parte, si la corriente entra al elemento por su terminal negativa se denomina potencia suministrada.
+[Potencia](https://es.wikipedia.org/wiki/Potencia_el%C3%A9ctrica): Es la cantidad de energía entregada o absorbida en cierto tiempo. Su unidad es el watt [W]. Al igual que la corriente, la potencia se define dependiendo de la dirección del flujo de cargas. En este caso, si la corriente que pasa por el elemento entra por su terminal positivo, se denomina potencia absorbida. Por otra parte, si la corriente entra al elemento por su terminal negativa se denomina potencia suministrada.
 
-Elemento lineal: Es un elemento que satisface las propiedades de superposición y de homogeneidad.
+[Componente electrónico](https://es.wikipedia.org/wiki/Componente_electr%C3%B3nico): Se denominan componentes electrónicos aquellos dispositivos que forman parte de un circuito electrónico.
 
-Elemento activo: Elemento capaz de suministrar energía
+[Elemento lineal](https://es.wikipedia.org/wiki/Circuito_lineal): Es un elemento que satisface las propiedades de superposición y de homogeneidad.
 
-Elemento pasivo: Elemento capaz de absorber energía.
+[Elemento activo](https://es.wikipedia.org/wiki/Fuente_de_alimentaci%C3%B3n): Elemento capaz de suministrar energía
+
+[Elemento pasivo](https://es.wikipedia.org/wiki/Componente_electr%C3%B3nico#Componentes_pasivos): Elemento capaz de absorber energía.
 
 [Resistencia](https://es.wikipedia.org/wiki/Resistencia_el%C3%A9ctrica): Es la propiedad física de un elemento o un dispositivo que impide el flujo de corriente. Se representa con el símbolo R. Su unidad es el ohm.
 
-Ley de Ohm: Es la relación lineal entre la corriente y el voltaje de un elemento, que corresponde a la fórmula v = Ri. 
+[Ley de Ohm](https://es.wikipedia.org/wiki/Ley_de_Ohm): Es la relación lineal entre la corriente y el voltaje de un elemento, que corresponde a la fórmula v = Ri. 
 
-Voltímetro: Es un dispositivo utilizado principalmente para medir tensiones o voltajes. Se conecta en paralelo al elemento del que se desea obtener la tensión
+[Voltímetro](https://es.wikipedia.org/wiki/Volt%C3%ADmetro): Es un dispositivo utilizado principalmente para medir tensiones o voltajes. Se conecta en paralelo al elemento del que se desea obtener la tensión
 
-Amperímetro: Es un dispositivo utilizado para medir corrientes eléctricas. Se debe conectar en serie con el elemento y la trayectoria de la cual se quiere conocer la corriente.
+[Amperímetro](https://es.wikipedia.org/wiki/Amper%C3%ADmetro): Es un dispositivo utilizado para medir corrientes eléctricas. Se debe conectar en serie con el elemento y la trayectoria de la cual se quiere conocer la corriente.
 
-Interruptor: Es un elemento que tiene dos estados: abierto, que corresponde a un circuito abierto; o cerrado, que corresponde a un corto circuito.
+[Interruptor](https://es.wikipedia.org/wiki/Interruptor): Es un elemento que tiene dos estados: abierto, que corresponde a un circuito abierto; o cerrado, que corresponde a un corto circuito.
 
-Conductor: Se conoce como conductor a un elemento físico caracterizado por su capacidad de permitir el flujo de cargas eléctricas con muy poca resistencia.
+[Conductor](https://es.wikipedia.org/wiki/Conductor_el%C3%A9ctrico): Se conoce como conductor a un elemento físico caracterizado por su capacidad de permitir el flujo de cargas eléctricas con muy poca resistencia.
 
-Bombilla: Es un elemento que se caracteriza por convertir la energía eléctrica en energía lumínica o luz.
+[Bombilla](https://es.wikipedia.org/wiki/L%C3%A1mpara_el%C3%A9ctrica): Es un elemento que se caracteriza por convertir la energía eléctrica en energía lumínica o luz.
 
 Referencias:
 [1] M. Montijano Moreno, “La simulación de circuitos en el aula de Electrónica”, [online] revista digital para profesionales en la enseñanza, N°4, Septiembre, 2009. Disponible en: https://www.feandalucia.ccoo.es/docu/p5sd5442.pdf
