@@ -1,4 +1,4 @@
-# Simulador-de-Circuitos-de-Corriente-Continua
+# Simulador de Circuitos
 
 # Integrantes
 | Nombre | Github nickname |
@@ -60,8 +60,8 @@ Referencias:
 [2] Dorf, R., Svoboda, J. Introduction to electric circuits (2014). Novena edición. John Wiley & Sons, Inc. EEUU.
 
 ## Antecedentes
-* Simulador de circuito electrónico (Applet Java): http://www.falstad.com/circuit-java/
-* Simulador de circuitos eléctricos (Java): http://www.aulas-fisica-quimica.com/9e_01.html
+* [Simulador de circuito electrónico (Applet Java)](http://www.falstad.com/circuit-java/)
+* [Simulador de circuitos eléctricos (Java)](http://www.aulas-fisica-quimica.com/9e_01.html)
 
 # Objetivos
 
@@ -77,4 +77,4 @@ Crear un simulador de circuitos con aspecto visual agradable, más gráfico y me
 Lenguaje: Processing
 Librerías
 * [Dashed Lines](https://github.com/garciadelcastillo/-dashed-lines-for-processing-): Esta librería puede ser utilizada para representar el flujo de corriente del circuito.
-* Geomerative: Puede ser utilizada para realizar las conexiones del circuito.
+* [Geomerative](http://www.ricardmarxer.com/geomerative/): Puede ser utilizada para realizar las conexiones del circuito.
