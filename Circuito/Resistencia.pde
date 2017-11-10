@@ -11,9 +11,17 @@ class Resist extends CircElm {
     noStroke();
     rectMode(CENTER);
     rect(0, 0, 50, 50);
-    shape(imgCap, -58, -27, 117, 55);
+    shape(imgCap, -50, -27, 100, 55);  
+  }
+  void drawNode1() {
+    stroke(255, 18, 18); 
+    strokeWeight(12);
+    point(0, 0); //entrada
+   
+  }
+  void drawNode2() {
     stroke(0);
-    line(-48, 0, node1.x, node1.y);
-    line(48, 0, node2.x, node2.y);
+    strokeWeight(12);
+    point(0, 0); //salida
   }
 }
