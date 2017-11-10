@@ -8,8 +8,8 @@ void initializeElem() {
 
 void addElem( int i ) {
   CircElm newElem = null;
-  if ( i == 0 ) newElem = new FuenteVolt(mouseX, mouseY, radians(45), 0, -35, 0, 35);
-  if ( i == 1 ) newElem = new Resist(mouseX, mouseY, radians(-45), -48, 0, 48, 0);
+  if ( i == 0 ) newElem = new FuenteVolt(mouseX, mouseY, radians(0), mouseX-40, mouseY, mouseX+40, mouseY);
+  if ( i == 1 ) newElem = new Resist(mouseX, mouseY, radians(90), mouseX-45, mouseY, mouseX+45, mouseY);
   elem.add( newElem );
 }
 
@@ -40,21 +40,21 @@ void mousePressed() {
     }
     for (int i = 0; i<elem.size(); i++) {
       if (dist (mouseX, mouseY, elem.get(i).trans.x, elem.get(i).trans.y) <= 25) {
-        elem.get(i).rot += radians(45);
+        elem.get(i).rot += radians(90);
       }
     }
   }
   if (mouseButton == LEFT) {
     for (int i=0; i<elem.size(); i++) {
       if (dist (mouseX, mouseY, elem.get(i).trans.x, elem.get(i).trans.y) <= 25) {
-        elem.get(i).mov = i;
+        elem.get(i).mov = true;
       }
-      if (dist (mouseX, mouseY, elem.get(i).node1.x, elem.get(i).node1.y) <= 20) {
-        elem.get(i).dragged = true;
+      if (dist (mouseX, mouseY, elem.get(i).node1.x, elem.get(i).node1.y) <= 12) {
+        elem.get(i).dragN1 = true;
       }
-      //if (dist (mouseX, mouseY, elem.get(i).node2.x, elem.get(i).node2.y) <= 10) {
-      //  elem.get(i).dragged = true;
-      //}
+      if (dist (mouseX, mouseY, elem.get(i).node2.x, elem.get(i).node2.y) <= 12) {
+        elem.get(i).dragN2 = true;
+      }
     }
   }
 }
@@ -62,17 +62,25 @@ void mousePressed() {
 void mouseReleased() {
   int idx = 0;
   for ( int i = 0; i < elem.size(); ++i ) {
-    if ( elem.get(i).mov >= 0 ) {
+    if ( elem.get(i).mov || elem.get(i).dragN1 || elem.get(i).dragN2) {
       idx = i;
     }
-    elem.get(i).mov = -1;
-    elem.get(i).dragged = false;
+    elem.get(i).mov = false;
+    elem.get(i).dragN1 = false;
+    elem.get(i).dragN2 = false;
+    println(idx);
   }
   for (int i=0; i<elem.size(); i++) {
     if ( i == idx ) continue;
-    if (dist( elem.get(i).trans.x, elem.get(i).trans.y, elem.get(idx).trans.x, elem.get(idx).trans.y)<=200) {
-      elem.get(i).trans.x = elem.get(idx).trans.x+90;
-      elem.get(i).trans.y = elem.get(idx).trans.y;
+    if (dist( elem.get(i).node1.x, elem.get(i).node1.y, elem.get(idx).node2.x, elem.get(idx).node2.y) <= 30) {
+      elem.get(i).node1.x = elem.get(idx).node2.x;
+      elem.get(i).node1.y = elem.get(idx).node2.y;
+      //elem.get(i).addConnection(i);
+    }
+    if (dist( elem.get(i).node2.x, elem.get(i).node2.y, elem.get(idx).node1.x, elem.get(idx).node1.y) <= 30) {
+      elem.get(i).node2.x = elem.get(idx).node1.x;
+      elem.get(i).node2.y = elem.get(idx).node1.y;
+      //elem.get(i).addConnection(i);
     }
   }
 }
