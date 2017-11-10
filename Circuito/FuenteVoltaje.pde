@@ -11,8 +11,20 @@ class FuenteVolt extends CircElm {
     noStroke();
     rectMode(CENTER);
     rect(0, 0, 50, 50);
-    shape(imgCap, -25, -35, 50, 69);
-    line(0, -35, node1.x, node1.y);
-    line(0, 35, node2.x, node2.y);
+    shape(imgCap, -25, -40, 52, 80);
+  }
+  void drawNode1() {
+    stroke(255, 18, 18); 
+    strokeWeight(12);
+    //rectMode(CENTER);
+    //rect(0, 0, 20, 20);
+    point(0, 0); //entrada
+  }
+  void drawNode2() {
+    stroke(0);
+    strokeWeight(12);
+    //rectMode(CENTER);
+    //rect(0, 0, 20, 20);
+    point(0, 0); //salida
   }
 }
