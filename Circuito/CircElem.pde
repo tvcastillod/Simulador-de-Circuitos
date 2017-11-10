@@ -1,13 +1,15 @@
 abstract class CircElm {
   protected PVector trans;
   protected float rot;
-  protected int mov = -1;
+  protected boolean mov, dragN1, dragN2 = false;
   protected boolean dragged = false;
   protected PShape imgCap;
   protected PVector node1, node2;
+  protected ArrayList<CircElm> connect;
 
-  public CircElm(float x, float y) {
+  public CircElm(float x, float y ) {
     trans = new PVector(x, y);
+    connect = new ArrayList<CircElm>();
   }
 
   public CircElm(float x, float y, float r, float x1, float y1, float x2, float y2, String source) {
@@ -25,37 +27,65 @@ abstract class CircElm {
     rotate(rot);
     noFill();
     drawElem();
-    stroke(255, 18, 18); 
-    strokeWeight(10);
-    point(node1.x, node1.y); //entrada
-    println(node1.x, node1.y);
-    stroke(0);
-    strokeWeight(10);
-    noFill();
-    point(node2.x, node2.y); //salida
     popMatrix();
     popStyle();
-    //for (int i=0; i<elem.size(); i++) {
-    // if (i > 0) { 
-    //  println(elem.get(i).trans.x-48, elem.get(i).trans.y, elem.get(i-1).trans.x-48, elem.get(i-1).trans.y);
-    //  println(mouseX, mouseY);
-    // }
-    //}
-    if (mov != -1) {
-      if (mousePressed) {
+
+    pushStyle();
+    pushMatrix();
+    translate(node1.x, node1.y);
+    noFill();
+    drawNode1();
+    popMatrix();
+    popStyle();
+
+    pushStyle();
+    pushMatrix();
+    translate(node2.x, node2.y);
+    noFill();
+    drawNode2();
+    popMatrix();
+    popStyle();
+
+    stroke(0);
+    strokeWeight(2);
+    line(trans.x-35, trans.y, node1.x, node1.y);
+    line(trans.x+35, trans.y, node2.x, node2.y);
+
+
+    if (mousePressed) {
+      if (mov) {
         trans.x = mouseX;
         trans.y = mouseY;
+        for (int i=0; i<elem.size(); i++) {
+          if (elem.get(i).mov == true) {
+            elem.get(i).node1.x = elem.get(i).trans.x-45;
+            elem.get(i).node1.y = elem.get(i).trans.y;
+            elem.get(i).node2.x = elem.get(i).trans.x+45;
+            elem.get(i).node2.y = elem.get(i).trans.y;
+          }
+        }
       }
-    }
-    if (dragged) {
-      if (mousePressed) {
+      if (dragN1) {
         node1.x = mouseX;
         node1.y = mouseY;
+      }
+      if (dragN2) {
+        node2.x = mouseX;
+        node2.y = mouseY;
       }
     }
   }
 
+  //void addConnection( int i ) {
+  //  CircElm newConnection;
+  //  if(){
+  //    connect.add( newConnection );
+  //  }
+  //}
+
   protected abstract void drawElem();
+  protected abstract void drawNode1();
+  protected abstract void drawNode2();
 
   void translation(float x, float y) {
     trans.x = x;
