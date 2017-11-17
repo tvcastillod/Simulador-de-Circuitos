@@ -28,11 +28,6 @@ boolean isConnected (CircElm elem1, CircElm elem2) {
   return elem1.nod1.contains( elem2.node1 ) || elem1.nod1.contains( elem2.node2 ) || elem2.nod1.contains( elem1.node1 ) || elem2.nod1.contains( elem1.node1 );
 }
 
-boolean paralelo(CircElm elem1, CircElm elem2) {
-  if ( isConnected(elem1, elem2) ) ;
-  return elem1.nod1.contains( elem2.node1 ) && elem1.nod2.contains( elem2.node2 ) || elem1.nod1.contains( elem2.node2 ) && elem1.nod2.contains( elem2.node1 );
-}
-
 boolean serie(CircElm elem1, CircElm elem2) {
   if ( isConnected(elem1, elem2) ) ;
   return elem1.nod1.contains( elem2.node1 ) || elem1.nod2.contains( elem2.node2 ) || elem1.nod1.contains( elem2.node2 ) || elem1.nod2.contains( elem2.node1 );
@@ -126,11 +121,13 @@ void mouseReleased() {
       if (dist( elem.get(i).node1.posicion.x, elem.get(i).node1.posicion.y, elem.get(temp).node2.posicion.x, elem.get(temp).node2.posicion.y) <= 30) {
         elem.get(i).node1.posicion.x = elem.get(temp).node2.posicion.x;
         elem.get(i).node1.posicion.y = elem.get(temp).node2.posicion.y;
-        elem.get(i).nod1.add( elem.get( temp ).node2 ); //agrega posiciones
-        elem.get(temp).nod2.add( elem.get( i ).node1 );
+        if (!elem.get(i).nod1.contains( elem.get( temp ).node2 ) && !elem.get(temp).nod2.contains( elem.get( i ).node1 )) {
+          elem.get(i).nod1.add( elem.get( temp ).node2 ); //agrega posiciones
+          elem.get(temp).nod2.add( elem.get( i ).node1 );
+        } else {
+        }
       }
-
-      if (elem.get(i).nod1.contains(elem.get(temp).node2)&&elem.get(temp).nod2.contains(elem.get(i).node1)) {
+      if (elem.get(i).nod1.contains(elem.get(temp).node2) && elem.get(temp).nod2.contains(elem.get(i).node1)) {
         if (elem.get(i).node1.posicion.x != elem.get(temp).node2.posicion.x && elem.get(i).node1.posicion.y != elem.get(temp).node2.posicion.y) {
           elem.get(i).nod1.remove( elem.get( temp ).node2 );
           elem.get(temp).nod2.remove( elem.get( i ).node1 );
@@ -141,21 +138,55 @@ void mouseReleased() {
       if (dist( elem.get(i).node1.posicion.x, elem.get(i).node1.posicion.y, elem.get(temp).node1.posicion.x, elem.get(temp).node1.posicion.y) <= 30) {
         elem.get(i).node1.posicion.x = elem.get(temp).node1.posicion.x;
         elem.get(i).node1.posicion.y = elem.get(temp).node1.posicion.y;
-        elem.get(i).nod1.add( elem.get( temp ).node1 );
-        elem.get(temp).nod1.add( elem.get( i ).node1 );
+        if (!elem.get(i).nod1.contains( elem.get( temp ).node1 ) && !elem.get(temp).nod1.contains( elem.get( i ).node1 )) {
+          elem.get(i).nod1.add( elem.get( temp ).node1 );
+          elem.get(temp).nod1.add( elem.get( i ).node1 );
+        } else {
+        }
       } 
+      
+      if (elem.get(i).nod1.contains( elem.get( temp ).node1 ) && elem.get(temp).nod1.contains( elem.get( i ).node1 ) ) {
+        if (elem.get(i).node1.posicion.x != elem.get(temp).node1.posicion.x && elem.get(i).node1.posicion.y != elem.get(temp).node1.posicion.y) {
+          elem.get(i).nod1.remove( elem.get( temp ).node1 );
+          elem.get(temp).nod1.remove( elem.get( i ).node1 );
+        }
+      }
+      
+      //----------------------------------------------------------------------------------------------------------------------------------------------
       if (dist( elem.get(i).node2.posicion.x, elem.get(i).node2.posicion.y, elem.get(temp).node1.posicion.x, elem.get(temp).node1.posicion.y) <= 30) {
         elem.get(i).node2.posicion.x = elem.get(temp).node1.posicion.x;
         elem.get(i).node2.posicion.y = elem.get(temp).node1.posicion.y;
-        elem.get(i).nod2.add( elem.get( temp ).node1 );
-        elem.get(temp).nod1.add( elem.get( i ).node2 );
+        if (!elem.get(i).nod2.contains( elem.get( temp ).node1 ) && !elem.get(temp).nod1.contains( elem.get( i ).node2 )) {
+          elem.get(i).nod2.add( elem.get( temp ).node1 );
+          elem.get(temp).nod1.add( elem.get( i ).node2 );
+        } else {
+        }
       }
+      
+      if (elem.get(i).nod2.contains( elem.get( temp ).node1 ) && elem.get(temp).nod1.contains( elem.get( i ).node2 )) {
+        if (elem.get(i).node2.posicion.x != elem.get(temp).node1.posicion.x && elem.get(i).node2.posicion.y != elem.get(temp).node1.posicion.y) {
+          elem.get(i).nod2.remove( elem.get( temp ).node1 );
+          elem.get(temp).nod1.remove( elem.get( i ).node2 );
+        }
+      }
+      
+      //---------------------------------------------------------------------------------------------------------------------------------------------
       if (dist( elem.get(i).node2.posicion.x, elem.get(i).node2.posicion.y, elem.get(temp).node2.posicion.x, elem.get(temp).node2.posicion.y) <= 30) {
         elem.get(temp).node2.posicion.x = elem.get(i).node2.posicion.x;
         elem.get(temp).node2.posicion.y = elem.get(i).node2.posicion.y;
-        elem.get(i).nod2.add( elem.get( temp ).node2 );
-        elem.get(temp).nod2.add( elem.get( i ).node2 );
+        if ( !elem.get(i).nod2.contains( elem.get( temp ).node2 ) && !elem.get(temp).nod2.contains( elem.get( i ).node2 )) {
+          elem.get(i).nod2.add( elem.get( temp ).node2 );
+          elem.get(temp).nod2.add( elem.get( i ).node2 );
+        } else {
+        }
       }
+      
+      if (elem.get(i).nod2.contains( elem.get( temp ).node2 ) && elem.get(temp).nod2.contains( elem.get( i ).node2 )) {
+        if (elem.get(temp).node2.posicion.x != elem.get(i).node2.posicion.x && elem.get(temp).node2.posicion.y != elem.get(i).node2.posicion.y) {
+          elem.get(i).nod2.remove( elem.get( temp ).node2 );
+          elem.get(temp).nod2.remove( elem.get( i ).node2 );
+        }
+      }      
     }
   }
 }
@@ -165,6 +196,6 @@ void mouseClicked() {
     for ( CircElm c : elem )
       println(c.nod1 + "/" + c.nod2 + "de: " + c);
     run = !run;
-    c = run ? 255 : 0;
+    //c = run ? 255 : 0;
   }
 }

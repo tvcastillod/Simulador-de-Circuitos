@@ -8,4 +8,8 @@ class Nodo {
     this.posicion = posicion;
   }
   
+  //public String toString(){
+  //  return "Tipo: " + this.tipo + ", Posición: " + this.posicion;
+  //}
+  
 }
