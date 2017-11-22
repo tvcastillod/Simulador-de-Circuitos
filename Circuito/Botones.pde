@@ -1,18 +1,18 @@
 class Boton {
   int rectSize = 60;
   color rectColor = color(0);
-  int rectX, rectY, width, height, posx, posy;
+  int rectX, rectY, width, height;
   boolean rectOver = false;
   PShape img;
+  String word;
 
-  public Boton(color rC, int x, int y, String source, int px, int py, int w, int h) {
+  public Boton(color rC, int x, int y, String source, int w, int h, String s) {
     rectColor = rC;
     width = w;
     height = h;
-    posx = px;
-    posy = py;
     rectX = x;
     rectY = y;
+    word = s;
     img = loadShape(source);
   }
 
@@ -22,8 +22,19 @@ class Boton {
     } else {
       noFill();
     }
+    pushStyle();
+    fill(0);
+    textSize(20);
+    textAlign(CENTER);
+    text(word, rectX, rectY-40);
+    popStyle();
+    strokeWeight(3);
+    rectMode(CENTER);
     rect(rectX, rectY, rectSize, rectSize);
-    shape(img, posx, posy, width, height);
+    pushStyle();
+    shapeMode(CENTER);
+    shape(img, rectX, rectY, width, height);
+    popStyle();
   }
 
   void overRect(int x, int y) {
@@ -35,7 +46,7 @@ class Boton {
   }
 
   boolean overRect(int x, int y, int width, int height) {
-    if (mouseX >= x && mouseX <= x+width && mouseY >= y && mouseY <= y+height) {
+    if (mouseX+25 >= x && mouseX+25 <= x+width && mouseY+25 >= y && mouseY+25 <= y+height) {
       return true;
     } else {
       return false;
