@@ -12,20 +12,46 @@ boolean run = false;
 ArrayList<CircElm> elem;
 Boton[] bt;
 IG ig;
+ControlP5 val;
+int py = 740;
+int num = 0;
 
 void initializeElem() {
   bt = new Boton[7];
   ig = new IG();
   elem = new ArrayList<CircElm>();
+  val = new ControlP5(this);
 }
 
 void addElem( int i ) {
   CircElm newElem = null;
-  if ( i == 0 ) newElem = new FuenteVolt(mouseX, mouseY, radians(270), mouseX, mouseY+45, mouseX, mouseY-45, cont); 
-  if ( i == 1 ) newElem = new Resist(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont); 
-  if ( i == 2 ) newElem = new Cable(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont);  
-  if ( i == 3 ) newElem = new Amp(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont);  
-  if ( i == 4 ) newElem = new Volt(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont);  
+  if ( i == 0 ) {
+    newElem = new FuenteVolt(mouseX, mouseY, radians(270), mouseX, mouseY+45, mouseX, mouseY-45, cont, 10);
+    val.addSlider("V"+ num)
+      .setSize(100, 15)
+      .setPosition(80, py)
+      .setRange(2, 10)
+      .setValue(2)
+      .setNumberOfTickMarks(5)
+      .setColorCaptionLabel(0)
+      .setSliderMode(Slider.FLEXIBLE)
+      ;
+  }
+  if ( i == 1 ) {
+    newElem = new Resist(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 100);
+    val.addSlider("R"+ num)
+      .setSize(100, 15)
+      .setPosition(80, py)
+      .setRange(100, 500)
+      .setValue(100)
+      .setNumberOfTickMarks(5)
+      .setColorCaptionLabel(0)
+      .setSliderMode(Slider.FLEXIBLE)
+      ;
+  }
+  if ( i == 2 ) newElem = new Cable(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0);  
+  if ( i == 3 ) newElem = new Amp(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0);  
+  if ( i == 4 ) newElem = new Volt(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0);  
   elem.add( newElem );
   cont++;
 }
@@ -40,15 +66,16 @@ boolean serie(CircElm elem1, CircElm elem2) {
 }
 
 void setup() {
-  size(1400, 800);
+  size(1400, 900);
+ // pixelDensity(1);
   initializeElem();
-  bt[0] = new Boton(color(0), 150, 230, "imgs/fuenteV.svg", 42, 70, "Fuente de Voltaje");
-  bt[1] = new Boton(color(0), 150, 330, "imgs/resistencia.svg", 85, 45, "Resistencia");
-  bt[2] = new Boton(color(0), 150, 430, "imgs/cable.svg", 60, 45, "Cable");
-  bt[3] = new Boton(color(0), 150, 530, "imgs/amperimetro.svg", 62, 42, "Amperimetro");
-  bt[4] = new Boton(color(0), 150, 630, "imgs/voltimetro.svg", 62, 46, "Voltimetro");
-  bt[5] = new Boton(color(0), 1150, 200, "imgs/_.svg", 85, 45, "");
-  bt[6] = new Boton(color(0), 1150, 690, "imgs/trash.svg", 45, 50, "");
+  bt[0] = new Boton(color(0), 150, 230, "imgs/fuenteV.svg", 42, 70, "Fuente de Voltaje", 60);
+  bt[1] = new Boton(color(0), 150, 330, "imgs/resistencia.svg", 85, 45, "Resistencia", 60);
+  bt[2] = new Boton(color(0), 150, 430, "imgs/cable.svg", 60, 45, "Cable", 60);
+  bt[3] = new Boton(color(0), 150, 530, "imgs/amperimetro.svg", 62, 42, "Amperimetro", 60);
+  bt[4] = new Boton(color(0), 150, 630, "imgs/voltimetro.svg", 62, 46, "Voltimetro", 60);
+  bt[5] = new Boton(color(0), 1150, 200, "imgs/_.svg", 85, 45, "", 60);
+  bt[6] = new Boton(color(0), 1150, 675, "imgs/trash.svg", 45, 50, "", 60);
   c = 0;
   dash = new DashedLines(this);
   dash.pattern(10, 10);
@@ -88,6 +115,8 @@ void mousePressed() {
     for ( int i = 0; i < 5; i++ ) {
       if (bt[i].rectOver) {
         addElem(i);
+        py += 20;
+        num += 1;
       }
     }
   }

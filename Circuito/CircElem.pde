@@ -7,8 +7,9 @@ abstract class CircElm {
   public int id;
   protected ArrayList<Nodo> nod1;
   protected ArrayList<Nodo> nod2;
+  protected float value;
 
-  public CircElm(float x, float y, float r, float x1, float y1, float x2, float y2, int i, String source) {
+  public CircElm(float x, float y, float r, float x1, float y1, float x2, float y2, int i, String source, float v) {
     trans = new PVector(x, y);
     node1 = new Nodo( 1, new PVector(x1, y1));
     node2 = new Nodo( 2, new PVector(x2, y2));
@@ -17,6 +18,7 @@ abstract class CircElm {
     id = i;
     rot = r;
     imgCap = loadShape(source);
+    value = v;
   }
 
   public void draw() {
@@ -27,8 +29,8 @@ abstract class CircElm {
     stroke(c);
     strokeWeight(2);
     dash.line(node2.posicion.x, node2.posicion.y, node1.posicion.x, node1.posicion.y);
-    popStyle();
-
+    popStyle(); 
+    
     pushStyle();
     pushMatrix();
     translate(trans.x, trans.y);

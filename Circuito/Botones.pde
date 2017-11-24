@@ -1,18 +1,20 @@
 class Boton {
-  int rectSize = 60;
+  int rectSize;
   color rectColor = color(0);
-  int rectX, rectY, width, height;
+  float rectX, rectY;
+  int width, height;
   boolean rectOver = false;
   PShape img;
   String word;
 
-  public Boton(color rC, int x, int y, String source, int w, int h, String s) {
+  public Boton(color rC, float x, float y, String source, int w, int h, String s, int rS) {
     rectColor = rC;
     width = w;
     height = h;
     rectX = x;
     rectY = y;
     word = s;
+    rectSize = rS;
     img = loadShape(source);
   }
 
@@ -37,7 +39,7 @@ class Boton {
     popStyle();
   }
 
-  void overRect(int x, int y) {
+  void overRect(float x, float y) {
     if ( overRect(rectX, rectY, rectSize, rectSize) ) {
       rectOver = true;
     } else {
@@ -45,7 +47,7 @@ class Boton {
     }
   }
 
-  boolean overRect(int x, int y, int width, int height) {
+  boolean overRect(float x, float y, int width, int height) {
     if (mouseX+25 >= x && mouseX+25 <= x+width && mouseY+25 >= y && mouseY+25 <= y+height) {
       return true;
     } else {
