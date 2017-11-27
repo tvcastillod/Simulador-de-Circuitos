@@ -15,7 +15,6 @@ int c;
 boolean run = false;
 ArrayList<CircElm> elem;
 Boton[] bt;
-IG ig;
 ControlP5 val;
 int pxr = 80;
 int pxv = 80;
@@ -23,7 +22,6 @@ int num = 0;
 
 void initializeElem() {
   bt = new Boton[7];
-  ig = new IG();
   elem = new ArrayList<CircElm>();
   val = new ControlP5(this);
 }
@@ -54,9 +52,9 @@ void addElem( int i ) {
       .setSliderMode(Slider.FLEXIBLE)
       ;
   }
-  if ( i == 2 ) newElem = new Cable(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0,"c");  
-  if ( i == 3 ) newElem = new Amp(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0,"a");  
-  if ( i == 4 ) newElem = new Volt(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0,"v");  
+  if ( i == 2 ) newElem = new Cable(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0, "c");  
+  if ( i == 3 ) newElem = new Amp(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0, "a");  
+  if ( i == 4 ) newElem = new Volt(mouseX, mouseY, radians(180), mouseX-45, mouseY, mouseX+45, mouseY, cont, 0, "v");  
   elem.add( newElem );
   cont++;
 }
@@ -65,27 +63,27 @@ boolean isConnected (CircElm elem1, CircElm elem2) {
   return elem1.nod1.contains( elem2.node1 ) || elem1.nod1.contains( elem2.node2 ) || elem2.nod1.contains( elem1.node1 ) || elem2.nod1.contains( elem1.node1 );
 }
 
-float equRes(ArrayList<CircElm> e){
+float equRes(ArrayList<CircElm> e) {
   float reseq = 0;
-  for(int i = 0; i < e.size(); i++){
-    if(e.get(i).type == "r"){
+  for (int i = 0; i < e.size(); i++) {
+    if (e.get(i).type == "r") {
       reseq += e.get(i).value;
-    }  
+    }
   }
   return reseq;
 }
 
-float Current(ArrayList<CircElm> e, float reseq){
+float Current(ArrayList<CircElm> e, float reseq) {
   float corr = 0;
   float volt = 0;
-  for(int j = 0; j < e.size(); j++){
-    if(e.get(j).type == "f"){
+  for (int j = 0; j < e.size(); j++) {
+    if (e.get(j).type == "f") {
       volt += e.get(j).value;
-    }  
+    }
   }
-  if(reseq == 0){
+  if (reseq == 0) {
     return corr = 0;
-  }else{
+  } else {
     corr = volt/reseq;
   }
   return corr;
@@ -97,7 +95,7 @@ void setup() {
   reset();
 }
 
-void reset(){
+void reset() {
   initializeElem();
   bt[0] = new Boton(color(0), 100, 160, "imgs/fuenteV.svg", 42, 70, "Fuente de Voltaje", 60);
   bt[1] = new Boton(color(0), 100, 260, "imgs/resistencia.svg", 85, 45, "Resistencia", 60);
@@ -111,15 +109,32 @@ void reset(){
   dash.pattern(10, 10);
 }
 
+void drawIG() {
+  PFont font;
+  fill(#2D3655);
+  font = createFont("Book Antiqua Bold", 50);
+  textFont(font);
+  pushStyle();
+  textAlign(CENTER, BOTTOM);
+  text("Simulador de Circuitos", width/2, 100);
+  stroke(0);
+  fill(255);
+  rectMode(CENTER);
+  rect(width/2, height/2+10, 600, 460);
+  noFill();
+  popStyle();
+}
+
 void draw() {
   background(240, 244, 250);
+  drawIG();
   if (run) {
     dash.offset(dist);
-    if(Current(elem, equRes(elem)) == 0){
+    if (Current(elem, equRes(elem)) == 0) {
       dist = 0;
-    }else if(Current(elem, equRes(elem)) > 0){
+    } else if (Current(elem, equRes(elem)) > 0) {
       dist -= 10*Current(elem, equRes(elem));
-    }else if(Current(elem, equRes(elem)) < 0){
+    } else if (Current(elem, equRes(elem)) < 0) {
       dist -= 10*Current(elem, equRes(elem));
     }
     pushStyle();
@@ -131,7 +146,7 @@ void draw() {
     println(equRes(elem));
     println(Current(elem, equRes(elem)));
     valueamp = Current(elem, equRes(elem));
-  }else{
+  } else {
     pushStyle();
     textSize(19);
     textAlign(LEFT, TOP); 
@@ -139,7 +154,6 @@ void draw() {
     text("No se puede ejecutar", 840, 250);
     popStyle();
   }
-  ig.draw();
   for ( int i = 0; i < 7; i++ ) {
     bt[i].draw();
     bt[i].overRect(mouseX, mouseY);
@@ -154,8 +168,8 @@ void mousePressed() {
     for ( int i = 0; i < 5; i++ ) {
       if (bt[i].rectOver) {
         addElem(i);
-        if(i == 0) pxv += 120;
-        if(i == 1) pxr += 120;
+        if (i == 0) pxv += 120;
+        if (i == 1) pxr += 120;
         num += 1;
       }
     }
@@ -194,8 +208,6 @@ void mouseReleased() {
       }
     }
   }
-  //for ( CircElm c : elem )
-  //print(c.id + " ");
 
   temp = -1;
   for ( int i = 0; i < elem.size(); i++ )
@@ -296,7 +308,7 @@ void mouseClicked() {
   if (n == 2*elem.size()) {
     run = true;
     println("Conectado");
-  }else{
+  } else {
     run = false;      
     println("No se puede ejecutar");
   }
@@ -307,5 +319,3 @@ void mouseClicked() {
     reset();
   }
 }
-
-// http://www.sojamo.de/libraries/controlP5/#examples
