@@ -1,10 +1,10 @@
 class Nodo {
   
-  int tipo;
+  float voltage;
   PVector posicion;
   
-  public Nodo(int tipo, PVector posicion){
-    this.tipo = tipo;
+  public Nodo(float voltage, PVector posicion){
+    this.voltage = voltage;
     this.posicion = posicion;
   }
   

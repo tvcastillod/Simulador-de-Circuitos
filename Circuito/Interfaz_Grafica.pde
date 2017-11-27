@@ -11,10 +11,8 @@ class IG {
     stroke(0);
     fill(255);
     rectMode(CENTER);
-    rect(width/2-10, height/2-30, 800, 580);
+    rect(width/2, height/2+10, 600, 460);
     noFill();
-    rect(150, height/2-30, 200, 580);
-    rect(150, height/2+350, 200, 150);
     popStyle();
   }
 }

@@ -2,8 +2,8 @@ class Resist extends CircElm {
 
   final static String IMG_SOURCE = "imgs/resistencia.svg";
 
-  public Resist(float x, float y, float r, float x1, float y1, float x2, float y2, int i, float v) {
-    super(x, y, r, x1, y1, x2, y2, i, IMG_SOURCE, v);
+  public Resist(float x, float y, float r, float x1, float y1, float x2, float y2, int i, float v, String t) {
+    super(x, y, r, x1, y1, x2, y2, i, IMG_SOURCE, v, t);
   }
 
   @Override
@@ -18,7 +18,7 @@ class Resist extends CircElm {
     textSize(15);
     textAlign(CENTER);
     text("R"+id, 0, -20);
-    text("= "+value, 0, 30);
+    text("= "+value + " Ohm", 0, 30);
   }
   void drawNode1() {
     stroke(255, 18, 18); 
