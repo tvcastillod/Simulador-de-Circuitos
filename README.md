@@ -76,6 +76,8 @@ Crear un simulador de circuitos con aspecto visual agradable, más gráfico y me
 # Requisitos
 Lenguaje: Processing
 
+Se deben instalar las siguientes librerías a partir del menú Sketch en la ventana principal de Processing:
+
 Librerías
 * [Dashed Lines](https://github.com/garciadelcastillo/-dashed-lines-for-processing-): Se utilza para representar el flujo de corriente del circuito.
 * [ControlP5](http://www.sojamo.de/libraries/controlP5/): Se requiere va cambiar los valores por defecto dede los elementos.
